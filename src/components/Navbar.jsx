@@ -1,26 +1,50 @@
-// We declare an object called styles that will contain a few objects for card and heading styles
-// Notice that each key lists CSS styles in camel case
-const styles = {
-  card: {
-    margin: 20,
-    background: '#e8eaf6',
-  },
-  heading: {
-    background: '#9a74db',
-    minHeight: 50,
-    lineHeight: 3.5,
-    fontSize: '1.2rem',
-    color: 'white',
-    padding: '0 20px',
-  },
-};
+import { Link, useLocation } from 'react-router-dom';
 
-// In Navbar, we can assign a style from an object by using curly braces
+// Here we are using object destructuring assignment to pluck off our variables from the props object
+// We assign them to their own variable names
 function Navbar() {
+  const currentPage = useLocation().pathname;
+
   return (
-    <div style={styles.card}>
-      <div style={styles.heading}>Home</div>
-    </div>
+    <ul className="nav nav-tabs">
+      <li className="nav-item">
+        <Link
+          to="/"
+          // This is a conditional (ternary) operator that checks to see if the current page is "Home"
+          // If it is, we set the current page to 'nav-link-active', otherwise we set it to 'nav-link'
+          className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
+        >
+          Home
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/About"
+          // Check to see if the currentPage is `About`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
+          className={currentPage === '/About' ? 'nav-link active' : 'nav-link'}
+        >
+          About
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/Blog"
+          // Check to see if the currentPage is `Blog`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
+          className={currentPage === '/Blog' ? 'nav-link active' : 'nav-link'}
+        >
+          Blog
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/Contact"
+          // Check to see if the currentPage is `Contact`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
+          className={currentPage === '/Contact' ? 'nav-link active' : 'nav-link'}
+        >
+          Contact
+        </Link>
+      </li>
+    </ul>
   );
 }
 

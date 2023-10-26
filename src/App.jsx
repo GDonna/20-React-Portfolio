@@ -1,18 +1,17 @@
-import './App.css';
-import Header from './components/Header';
-import Navbar from './components/Navbar';
-import Card from './components/Card';
+// import './App.css';
+import { Outlet } from 'react-router-dom';
+import Nav from './components/NavTabs';
+
+
 
 function App() {
   return (
-    <div> 
-      <Header />
-      <Navbar />
-      <Card />
-      <Card />
-      <Card />
-     
-    </div>
+    <>
+      <Nav />
+      <main className="mx-3">
+        <Outlet />
+      </main>
+    </>
   );
 }
 
